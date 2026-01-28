@@ -48,6 +48,18 @@ def run_game():
     else:
         p1_placed = state["p1_placed"]
         p2_placed = state["p2_placed"]
+        p1_
+
+        if p1_placed = False:
+            if not os.path.exists("p1_setup.json"):
+                print("Keine Aufstellung von p1 vorhanden.")
+                return
+            
+            with open("p1_setup.json", "r") as f:
+                move = json.load(f)
+
+
+        
 
         if p1_placed and p2_placed:
             is_running = True
