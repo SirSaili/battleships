@@ -3,7 +3,7 @@ name: Schiedsrichter-Logik
 on:
   push:
     paths:
-      - 'trigger.txt' # Nur wenn diese Datei geändert wird, läuft das Skript
+      - 'move.json' # Nur wenn diese Datei geändert wird, läuft das Skript
 
 jobs:
   run-logic:
