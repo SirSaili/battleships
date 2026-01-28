@@ -1,5 +1,5 @@
 {
-    "turn": "p2",
+    "turn": "p1",
     "p1_ships": [
         0,
         1,
@@ -88,7 +88,7 @@
         0,
         2,
         0,
-        0,
+        2,
         0,
         0,
         0,
@@ -108,5 +108,5 @@
         0,
         0
     ],
-    "last_move_result": "p1 hat verfehlt auf Feld 24."
+    "last_move_result": "p2 hat verfehlt auf Feld 6."
 }
