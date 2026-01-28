@@ -1,0 +1,27 @@
+name: Schiedsrichter-Logik
+
+on:
+  push:
+    paths:
+      - 'trigger.txt' # Nur wenn diese Datei geändert wird, läuft das Skript
+
+jobs:
+  run-logic:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # Wichtig: Damit das Skript die JSON speichern darf
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Python Setup
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+          
+      - name: Skript ausführen
+        run: python referee.py
+        
+      - name: Änderungen speichern
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Spielzug verarbeitet"
