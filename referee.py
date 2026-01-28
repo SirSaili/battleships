@@ -45,25 +45,49 @@ def run_game():
         
         os.remove("move.json") # Spielzug löschen, damit er nicht doppelt zählt
 
+        # Hat jemand gewonnen
+        if state["p1_view"].count(3) == 3:
+            state["last_move_result"] = "SPIELER 1 GEWINNT!"
+            state["is_running"] = False
+        elif state["p2_view"].count(3) == 3:
+            state["last_move_result"] = "SPIELER 2 GEWINNT!"
+            state["is_running"] = False
+    
     else:
         p1_placed = state["p1_placed"]
         p2_placed = state["p2_placed"]
-        p1_
+        p1_ships = []
+        p2_ships = []
 
-        if p1_placed = False:
+        if not p1_placed:
             if not os.path.exists("p1_setup.json"):
                 print("Keine Aufstellung von p1 vorhanden.")
                 return
             
             with open("p1_setup.json", "r") as f:
-                move = json.load(f)
+                p1_setup = json.load(f)
+            state["p1_ships"] = p1_setup["ships"]
+            state["p1_placed"] = True
+            os.remove("p1_setup.json")
 
 
+        if not p2_placed:
+            if not os.path.exists("p2_setup.json"):
+                print("Keine Aufstellung von p2 vorhanden.")
+                return
+            
+            with open("p2_setup.json", "r") as f:
+                p2_setup = json.load(f)
+            state["p2_ships"] = p2_setup["ships"]
+            state["p2_placed"] = True
+            os.remove("p2_setup.json")
         
 
-        if p1_placed and p2_placed:
-            is_running = True
-
+        if state["p1_placed"] and state["p2_placed"]:
+            state["is_running"] = True
+            
+        with open("game_state.json", "w") as f:
+            json.dump(state, f, indent=4)
 
         
 if __name__ == "__main__":
