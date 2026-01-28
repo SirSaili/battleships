@@ -4,7 +4,8 @@ on:
   push:
     paths:
       - 'move.json' # Nur wenn diese Datei geändert wird, läuft das Skript
-
+      - 'p1_setup.json'
+      - 'p2_setup.json'
 jobs:
   run-logic:
     runs-on: ubuntu-latest
