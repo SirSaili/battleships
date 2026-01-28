@@ -1,20 +1,44 @@
 import json
 import os
 
-# 1. Spielstand laden (oder neu erstellen)
-file_path = "game_state.json"
-if os.path.exists(file_path):
-    with open(file_path, "r") as f:
-        game_state = json.load(f)
-else:
-    game_state = {"hits": 0, "status": "Start"}
+def run_game():
+    # 1. Dateien laden
+    if not os.path.exists("move.json"):
+        print("Kein Spielzug vorhanden.")
+        return
 
-# 2. Die "Logik" ausführen
-game_state["hits"] += 1
-game_state["status"] = "Update durch Python"
+    with open("game_state.json", "r") as f:
+        state = json.load(f)
+    with open("move.json", "r") as f:
+        move = json.load(f)
 
-# 3. Speichern
-with open(file_path, "w") as f:
-    json.dump(game_state, f, indent=4)
+    player = move["player"]  # "p1" oder "p2"
+    coord = move["coord"]    # 0 bis 24
 
-print(f"Logik ausgeführt. Treffer jetzt bei: {game_state['hits']}")
+    # 2. Prüfen, wer dran ist
+    if player != state["turn"]:
+        state["last_move_result"] = f"Falscher Spieler! {state['turn']} ist dran."
+    else:
+        # 3. Logik: Treffer oder Wasser?
+        # Wenn p1 schießt, gucken wir bei p2_ships nach
+        target_ships = "p2_ships" if player == "p1" else "p1_ships"
+        player_view = "p1_view" if player == "p1" else "p2_view"
+
+        if state[target_ships][coord] == 1:
+            state[player_view][coord] = 3 # Treffer
+            state["last_move_result"] = f"{player} hat getroffen auf Feld {coord}!"
+        else:
+            state[player_view][coord] = 2 # Wasser
+            state["last_move_result"] = f"{player} hat verfehlt auf Feld {coord}."
+
+        # Spieler wechseln
+        state["turn"] = "p2" if player == "p1" else "p1"
+
+    # 4. Speichern und aufräumen
+    with open("game_state.json", "w") as f:
+        json.dump(state, f, indent=4)
+    
+    os.remove("move.json") # Spielzug löschen, damit er nicht doppelt zählt
+
+if __name__ == "__main__":
+    run_game()
