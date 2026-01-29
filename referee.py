@@ -8,9 +8,8 @@ def run_game():
     def clear_game():
         state["last_move_result"] = "Game Over"
         state["is_running"] = False
-        state["p1_placed"]
-        state["p2_placed"]
-        state[""]
+        state["p1_placed"] = ""
+        state["p2_placed"] = ""
         
     # 1. Dateien laden
     with open("game_state.json", "r") as f:
