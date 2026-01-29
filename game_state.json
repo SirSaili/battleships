@@ -2,7 +2,7 @@
     "is_running": true,
     "p1_placed": true,
     "p2_placed": true,
-    "turn": "p1",
+    "turn": "p2",
     "p1_ships": [
         0,
         0,
@@ -69,7 +69,7 @@
         0,
         0,
         3,
-        0,
+        3,
         3,
         0,
         0,
@@ -111,6 +111,6 @@
         0,
         0
     ],
-    "last_move_result": "p2 hat verfehlt auf Feld 0.",
-    "winner": ""
+    "last_move_result": "p1 hat getroffen auf Feld 11!",
+    "winner": "p1"
 }
