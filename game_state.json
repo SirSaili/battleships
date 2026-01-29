@@ -1,5 +1,5 @@
 {
-    "is_running": false,
+    "is_running": true,
     "p1_placed": true,
     "p2_placed": true,
     "turn": "p1",
