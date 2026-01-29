@@ -43,11 +43,15 @@ def run_game():
 
         # Hat jemand gewonnen
         if state["p1_view"].count(3) == 3:
-            state["last_move_result"] = "SPIELER 1 GEWINNT!"
+            state["last_move_result"] = "Game Over"
             state["is_running"] = False
+            state["winner"] = "Player 1"
+        
         elif state["p2_view"].count(3) == 3:
-            state["last_move_result"] = "SPIELER 2 GEWINNT!"
+            state["last_move_result"] = "Game Over"
             state["is_running"] = False
+            state["winner"] = "Player 2"
+
 
         # 4. Speichern und aufräumen
         with open("game_state.json", "w") as f:
