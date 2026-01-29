@@ -33,9 +33,9 @@ def run_game():
         coord = move["coord"]    # 0 bis 24
         
             # 2. Prüfen, wer dran ist
-         if player != state["turn"]:
+        if player != state["turn"]:
             state["last_move_result"] = f"Falscher Spieler! {state['turn']} ist dran."
-         else:
+        else:
                 # 3. Logik: Treffer oder Wasser?
                 # Wenn p1 schießt, gucken wir bei p2_ships nach
             target_ships = "p2_ships" if player == "p1" else "p1_ships"
