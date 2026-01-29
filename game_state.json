@@ -1,8 +1,8 @@
 {
-    "is_running": true,
+    "is_running": false,
     "p1_placed": true,
     "p2_placed": true,
-    "turn": "p2",
+    "turn": "p1",
     "p1_ships": [
         0,
         0,
@@ -87,7 +87,7 @@
     "p2_view": [
         0,
         0,
-        0,
+        2,
         0,
         2,
         0,
@@ -111,5 +111,6 @@
         0,
         0
     ],
-    "last_move_result": "p1 hat getroffen auf Feld 12!"
+    "last_move_result": "Game Over",
+    "winner": "Player 1"
 }
