@@ -9,8 +9,8 @@ def run_game():
     def clear_game():
         state["last_move_result"] = "Game Over"
         state["is_running"] = False
-        state["p1_placed"] = ""
-        state["p2_placed"] = ""
+        state["p1_placed"] = False
+        state["p2_placed"] = False
 
 
     
