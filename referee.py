@@ -11,6 +11,9 @@ def run_game():
         state["is_running"] = False
         state["p1_placed"] = False
         state["p2_placed"] = False
+        state["p1_view"] = [0] * 25
+        state["p2_view"] = [0] * 25
+
 
 
     
