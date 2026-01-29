@@ -39,11 +39,7 @@ def run_game():
             # Spieler wechseln
             state["turn"] = "p2" if player == "p1" else "p1"
     
-        # 4. Speichern und aufräumen
-        with open("game_state.json", "w") as f:
-            json.dump(state, f, indent=4)
         
-        os.remove("move.json") # Spielzug löschen, damit er nicht doppelt zählt
 
         # Hat jemand gewonnen
         if state["p1_view"].count(3) == 3:
@@ -52,7 +48,12 @@ def run_game():
         elif state["p2_view"].count(3) == 3:
             state["last_move_result"] = "SPIELER 2 GEWINNT!"
             state["is_running"] = False
-    
+
+        # 4. Speichern und aufräumen
+        with open("game_state.json", "w") as f:
+            json.dump(state, f, indent=4)
+        
+        os.remove("move.json") # Spielzug löschen, damit er nicht doppelt zählt
     else:
         p1_placed = state["p1_placed"]
         p2_placed = state["p2_placed"]
