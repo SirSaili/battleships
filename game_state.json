@@ -1,7 +1,7 @@
 {
     "is_running": false,
-    "p1_placed": "",
-    "p2_placed": "",
+    "p1_placed": false,
+    "p2_placed": false,
     "turn": "p1",
     "p1_ships": [
         0,
