@@ -94,6 +94,7 @@ def run_game():
     
         if state["p1_placed"] and state["p2_placed"]:
             state["is_running"] = True
+            state["winner"] = ""
                 
         with open("game_state.json", "w") as f:
             json.dump(state, f, indent=4)
