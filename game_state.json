@@ -1,7 +1,7 @@
 {
-    "is_running": false,
+    "is_running": true,
     "p1_placed": true,
-    "p2_placed": false,
+    "p2_placed": true,
     "turn": "p1",
     "p1_ships": [
         0,
@@ -112,5 +112,5 @@
         0
     ],
     "last_move_result": "Game Over",
-    "winner": "p1"
+    "winner": ""
 }
