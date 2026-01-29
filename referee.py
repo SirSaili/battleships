@@ -72,27 +72,21 @@ def run_game():
         p2_placed = state["p2_placed"]
     
         if not p1_placed:
-            if not os.path.exists("p1_setup.json"):
-                print("Keine Aufstellung von p1 vorhanden.")
-                return
-                
-            with open("p1_setup.json", "r") as f:
-                p1_setup = json.load(f)
-            state["p1_ships"] = p1_setup["ships"]
-            state["p1_placed"] = True
-            os.remove("p1_setup.json")
+            if os.path.exists("p1_setup.json"):                
+                with open("p1_setup.json", "r") as f:
+                    p1_setup = json.load(f)
+                state["p1_ships"] = p1_setup["ships"]
+                state["p1_placed"] = True
+                os.remove("p1_setup.json")
     
     
         if not p2_placed:
-            if not os.path.exists("p2_setup.json"):
-                print("Keine Aufstellung von p2 vorhanden.")
-                return
-                
-            with open("p2_setup.json", "r") as f:
-                p2_setup = json.load(f)
-            state["p2_ships"] = p2_setup["ships"]
-            state["p2_placed"] = True
-            os.remove("p2_setup.json")
+            if os.path.exists("p2_setup.json"):
+                with open("p2_setup.json", "r") as f:
+                    p2_setup = json.load(f)
+                state["p2_ships"] = p2_setup["ships"]
+                state["p2_placed"] = True
+                os.remove("p2_setup.json")
             
     
         if state["p1_placed"] and state["p2_placed"]:
